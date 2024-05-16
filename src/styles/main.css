@@ -1,0 +1,428 @@
+:root {
+  --primary-color: #795458;
+  --secondary-color: #fbf9f1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*
+      App Bar
+    */
+.skip-link {
+  position: absolute;
+  height: 115px;
+  top: -115px;
+  left: 0;
+  align-content: center;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 44px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 4px solid var(--primary-color);
+}
+
+header {
+  background-color: white;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo > img {
+  height: 50px;
+  min-height: 50px;
+  margin: 30px;
+}
+
+#drawer > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#drawer > ul > li {
+  display: inline;
+}
+
+#drawer > ul > li > a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  padding: 44px;
+  transition: all 0.3s ease;
+}
+
+#drawer > ul > li > a:hover {
+  color: var(--primary-color);
+}
+
+#drawer > ul > li > a:focus {
+  outline: 4px solid var(--primary-color);
+}
+
+#hamburger {
+  padding: 44px;
+  background: url("../public/icons/icon-hamburger.png");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+#hamburger:focus {
+  outline: 4px solid var(--primary-color);
+}
+
+/*
+  Content
+*/
+
+main {
+  flex: 1;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+#aksaraOpenButton,
+#quizOpenButton {
+  width: 150px;
+  height: 150px;
+  margin-top: 24px;
+  margin-left: 50px;
+  background: url("../public/icons/icon-plus.png");
+  background-size: 150px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+
+.heading-content {
+  margin: 50px 0;
+  color: #333;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  transition: 0.3s;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.card-img {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  max-height: 600px;
+  padding: 16px;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.card:focus {
+  outline: 4px solid var(--primary-color);
+}
+
+.card-content {
+  color: #333;
+  padding: 8px;
+  text-align: start;
+}
+
+/* .card-content > p {
+  margin: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+} */
+
+.aksara-img,
+.quiz-img {
+  object-fit: scale-down;
+  height: 250px;
+  width: 100%;
+}
+
+/*
+      Aksara
+    */
+.aksara-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-bottom: 50px;
+}
+
+.aksara-label {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/*
+      Quiz
+    */
+.quiz-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-bottom: 50px;
+}
+
+.quiz-card-container {
+  display: grid;
+  grid-template-columns: 200px auto;
+  gap: 10px;
+}
+
+.quiz-content {
+  padding: 16px;
+  text-align: start;
+}
+
+.label-quiz {
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.data-quiz {
+  margin: 4px 0;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+/*
+      Footer
+    */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 16px;
+  margin-top: auto;
+}
+
+/*
+      Spinner
+    */
+.loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  display: none;
+  z-index: 9999;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #a63955;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/*
+      Input
+    */
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.5);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  z-index: 9999;
+  display: none;
+}
+
+.input-form {
+  border-radius: 10px;
+  width: 1000px;
+  min-width: 700px;
+  height: auto;
+  background-color: white;
+  display: grid;
+  grid-template-rows: 50px auto;
+  gap: 0;
+}
+
+#closeButton {
+  width: 44px;
+  justify-self: right;
+  background: url("../public/icons/icon-close.png");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+
+.input-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  font-size: 16px;
+}
+
+.input-content > p {
+  font-weight: bold;
+  font-size: 24px;
+  align-self: center;
+  color: #333;
+  margin-top: 0;
+}
+
+input {
+  padding: 16px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+}
+
+#submitAksaraButton,
+#submitQuizButton {
+  padding: 16px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* 
+    Custom Context Menu 
+    */
+.custom-context-menu {
+  width: 300px;
+
+  visibility: hidden;
+  scale: 0;
+  background: #fff;
+
+  position: absolute;
+  border-radius: 4px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.custom-context-menu .menu {
+  padding: 10px 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-context-menu .content .menu-item {
+  border-radius: 4px;
+  margin-block-end: 2px;
+
+  list-style: none;
+  font-size: 1em;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.custom-context-menu .content .menu-item:hover {
+  background: #c0c0c0;
+}
+
+.custom-context-menu .content .menu-item button {
+  width: 100%;
+  padding: 12px;
+
+  text-align: start;
+  font-size: inherit;
+  border: none;
+  background-color: transparent;
+
+  appearance: none;
+
+  cursor: pointer;
+}

@@ -1,0 +1,88 @@
+import JaksaraSource from "../../data/jaksara-source";
+import {
+  createQuizItemTemplate,
+  showLoadingSpinner,
+  hideLoadingSpinner,
+  quizInput,
+} from "../templates/template-creator";
+
+const Quiz = {
+  async render() {
+    return `
+      <div class="content">
+        <Button id="quizOpenButton" aria-label="Open input"></Button>
+        <h2 class="heading-content">Daftar Kuis</h2>
+        <div id="quizContainer" class="quiz-container"></div>
+      </div>
+    `;
+  },
+
+  async afterRender() {
+    showLoadingSpinner();
+
+    try {
+      await this.renderQuizList();
+    } catch (error) {
+      alert(error);
+    } finally {
+      hideLoadingSpinner();
+    }
+
+    const inpuContent = document.querySelector(".input-content");
+    const openButton = document.querySelector("#quizOpenButton");
+    openButton.addEventListener("click", () => {
+      document.querySelector(".input-container").style.display = "flex";
+      inpuContent.innerHTML = "";
+      inpuContent.innerHTML += quizInput();
+
+      const submitQuizButton = document.querySelector("#submitQuizButton");
+      submitQuizButton.addEventListener("click", async () => {
+        const quizQuestion = document.querySelector("#quizQuestion").value;
+        const quizImgUrl = document.querySelector("#quizImgUrl").value;
+        const quizCorrect = document.querySelector("#quizCorrect").value;
+        const quizIncorrect1 = document.querySelector("#quizIncorrect1").value;
+        const quizIncorrect2 = document.querySelector("#quizIncorrect2").value;
+        const quizIncorrect3 = document.querySelector("#quizIncorrect3").value;
+
+        const newQuiz = {
+          question: quizQuestion,
+          imgUrl: quizImgUrl,
+          correctAnswer: quizCorrect,
+          incorrectAnswer1: quizIncorrect1,
+          incorrectAnswer2: quizIncorrect2,
+          incorrectAnswer3: quizIncorrect3,
+        };
+
+        try {
+          showLoadingSpinner();
+          const postQuizMessage = await JaksaraSource.postQuiz(newQuiz);
+          await this.renderQuizList();
+          alert(postQuizMessage);
+        } catch (error) {
+          alert(error);
+        } finally {
+          document.querySelector(".input-container").style.display = "none";
+          hideLoadingSpinner();
+        }
+      });
+    });
+  },
+
+  async renderQuizList() {
+    const quizs = await JaksaraSource.getQuiz();
+    const quizContainer = document.querySelector("#quizContainer");
+    quizContainer.innerHTML = "";
+    let imageUrl;
+    quizs.forEach((data) => {
+      if (data.hasImg === true) {
+        imageUrl = data.imgUrl;
+      } else {
+        imageUrl =
+          "https://raw.githubusercontent.com/Adranaut/resource-capstone/main/icon-aksara.png";
+      }
+      quizContainer.innerHTML += createQuizItemTemplate(data, imageUrl);
+    });
+  },
+};
+
+export default Quiz;

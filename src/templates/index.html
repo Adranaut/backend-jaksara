@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#795458" />
+    <link rel="manifest" href="app.webmanifest" />
+    <link rel="icon" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Backend JAksara</title>
+  </head>
+  <body>
+    <div class="input-container">
+      <form class="input-form">
+        <button id="closeButton" aria-label="Close input"></button>
+        <div class="input-content"></div>
+      </form>
+    </div>
+    <div id="loadingSpinner" class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+    <a href="#maincontent" class="skip-link">Menuju ke konten >></a>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <img src="./logo/logo.png" alt="Logo Restaurant" />
+        </div>
+        <button id="hamburger" aria-label="Navigasi menu"></button>
+        <nav id="drawer">
+          <ul>
+            <li><a href="#/aksara">Aksara</a></li>
+            <li><a href="#/quiz">Kuis</a></li>
+            <li>
+              <a href="https://www.youtube.com/" id="link-about-us">About Us</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main tabindex="0" id="maincontent"></main>
+    <footer><p>Copyright &copy; 2024 Capstone Dicoding - JAksara</p></footer>
+    <div id="custom-context-menu" class="custom-context-menu wrapper">
+      <div class="content">
+        <ul class="menu">
+          <li class="menu-item">
+            <button id="edit-menu"><i class="fas fa-edit"></i> Ubah</button>
+            <button id="delete-menu"><i class="fas fa-trash"></i> Hapus</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
