@@ -163,21 +163,40 @@ main {
   text-align: start;
 }
 
-/* .card-content > p {
-  margin: 10px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 14px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-} */
-
 .aksara-img,
 .quiz-img {
   object-fit: scale-down;
   height: 250px;
   width: 100%;
+}
+
+.card-action {
+  padding: 16px;
+  text-align: right;
+}
+
+.editAksaraButton,
+.editQuizButton {
+  width: 44px;
+  height: 44px;
+  background: url("../public/icons/icon-edit.png");
+  background-size: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteAksaraButton,
+.deleteQuizButton {
+  width: 44px;
+  height: 44px;
+  background: url("../public/icons/icon-trash.png");
+  background-size: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
 }
 
 /*
@@ -196,6 +215,8 @@ main {
   text-align: center;
   font-size: 32px;
   font-weight: bold;
+  margin: 0;
+  padding-top: 16px;
 }
 
 /*
@@ -217,7 +238,8 @@ main {
 }
 
 .quiz-content {
-  padding: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
   text-align: start;
 }
 
@@ -360,7 +382,9 @@ label {
 }
 
 #submitAksaraButton,
-#submitQuizButton {
+#submitQuizButton,
+#submitAksaraEditButton,
+#submitQuizEditButton {
   padding: 16px;
   margin-top: 32px;
   margin-bottom: 16px;

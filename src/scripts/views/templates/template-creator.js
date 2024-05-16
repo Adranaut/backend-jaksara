@@ -8,6 +8,10 @@ const createAksaraItemTemplate = (aksara) => `
     <div class="card-content">
       <p class="aksara-label">${aksara.label}</p>
     </div>
+    <div class="card-action">
+      <button class="editAksaraButton" aria-label="Edit data"></button>
+      <button class="deleteAksaraButton" aria-label="Hapus data"></button>
+    </div>
   </article>
 `;
 
@@ -26,6 +30,10 @@ const createQuizItemTemplate = (quiz, imageUrl) => `
         <p class="data-quiz">- ${quiz.incorrectAnswer.incorrectAnswer1}</p>
         <p class="data-quiz">- ${quiz.incorrectAnswer.incorrectAnswer2}</p>
         <p class="data-quiz">- ${quiz.incorrectAnswer.incorrectAnswer3}</p>
+        <div class="card-action">
+          <button class="editQuizButton" aria-label="Edit data"></button>
+          <button class="deleteQuizButton" aria-label="Hapus data"></button>
+        </div>
       </div>
     </div>
   </article>
@@ -50,6 +58,17 @@ const aksaraInput = () => `
   <button id="submitAksaraButton">Tambah</button>
 `;
 
+const aksaraEdit = () => `
+  <p>Ubah Aksara</p>
+  <label for="aksaraId">ID</label>
+  <input type="text" id="editAksaraId" placeholder="Masukan ID" required>
+  <label for="aksaraLabel">Label</label>
+  <input type="text" id="editAksaraLabel" placeholder="Masukan Label" required>
+  <label for="aksaraImgUrl">URL Gambar</label>
+  <input type="text" id="editAksaraImgUrl" placeholder="Masukan URL Gambar" required>
+  <button id="submitAksaraEditButton">Ubah</button>
+`;
+
 const quizInput = () => `
   <p>Tambah Kuis</p>
   <label for="quizQuestion">Pertanyaan</label>
@@ -67,11 +86,30 @@ const quizInput = () => `
   <button id="submitQuizButton">Tambah</button>
 `;
 
+const quizEdit = () => `
+  <p>Ubah Kuis</p>
+  <label for="quizQuestion">Pertanyaan</label>
+  <input type="text" id="editQuizQuestion" placeholder="Masukan Pertanyaan" required>
+  <label for="quizImgUrl">URL Gambar</label>
+  <input type="text" id="editQuizImgUrl" placeholder="Masukan URL Gambar">
+  <label for="quizCorrect">Jawaban Benar</label>
+  <input type="text" id="editQuizCorrect" placeholder="Masukan Jawaban Benar" required>
+  <label for="quizIncorrect1">Jawaban Salah ke-1</label>
+  <input type="text" id="editQuizIncorrect1" placeholder="Masukan Jawaban Salah ke-1" required>
+  <label for="quizIncorrect2">Jawaban Salah ke-2</label>
+  <input type="text" id="editQuizIncorrect2" placeholder="Masukan Jawaban Salah ke-2" required>
+  <label for="quizIncorrect3">Jawaban Salah ke-3</label>
+  <input type="text" id="editQuizIncorrect3" placeholder="Masukan Jawaban Salah ke-3" required>
+  <button id="submitQuizEditButton">Ubah</button>
+`;
+
 export {
   createAksaraItemTemplate,
   createQuizItemTemplate,
   showLoadingSpinner,
   hideLoadingSpinner,
   aksaraInput,
+  aksaraEdit,
   quizInput,
+  quizEdit,
 };
