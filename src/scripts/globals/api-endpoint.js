@@ -5,6 +5,8 @@ const API_ENDPOINT = {
   QUIZ: `${CONFIG.BASE_URL}/quiz`,
   PUTAKSARA: (id) => `${CONFIG.BASE_URL}/aksara/${id}`,
   PUTQUIZ: (id) => `${CONFIG.BASE_URL}/quiz/${id}`,
+  DELETEAKSARA: (id) => `${CONFIG.BASE_URL}/aksara/${id}`,
+  DELETEQUIZ: (id) => `${CONFIG.BASE_URL}/quiz/${id}`,
 };
 
 export default API_ENDPOINT;

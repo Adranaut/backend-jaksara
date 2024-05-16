@@ -33,6 +33,15 @@ class JaksaraSource {
     return responseJson.message;
   }
 
+  static async deleteAksara(id) {
+    const options = {
+      method: "DELETE",
+    };
+    const response = await fetch(API_ENDPOINT.DELETEAKSARA(id), options);
+    const responseJson = await response.json();
+    return responseJson.message;
+  }
+
   static async getQuiz() {
     const response = await fetch(API_ENDPOINT.QUIZ);
     const responseJson = await response.json();
@@ -61,6 +70,15 @@ class JaksaraSource {
       body: JSON.stringify(quiz),
     };
     const response = await fetch(API_ENDPOINT.PUTQUIZ(id), options);
+    const responseJson = await response.json();
+    return responseJson.message;
+  }
+
+  static async deleteAQuiz(id) {
+    const options = {
+      method: "DELETE",
+    };
+    const response = await fetch(API_ENDPOINT.DELETEQUIZ(id), options);
     const responseJson = await response.json();
     return responseJson.message;
   }

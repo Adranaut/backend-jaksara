@@ -38,12 +38,12 @@ const Aksara = {
 
       const submitAksaraButton = document.querySelector("#submitAksaraButton");
       submitAksaraButton.addEventListener("click", async () => {
-        const aksaraId = document.querySelector("#aksaraId").value;
+        const aksaraNumber = document.querySelector("#aksaraNumber").value;
         const aksaraLabel = document.querySelector("#aksaraLabel").value;
         const aksaraImgUrl = document.querySelector("#aksaraImgUrl").value;
 
         const newAksara = {
-          id: aksaraId,
+          number: aksaraNumber,
           label: aksaraLabel,
           imgUrl: aksaraImgUrl,
         };
@@ -75,12 +75,12 @@ const Aksara = {
     const editButtons = document.querySelectorAll(".editAksaraButton");
     editButtons.forEach((button, index) => {
       button.addEventListener("click", () => {
-        console.log(`Edit aksara ${aksaraList[index].label}`);
         document.querySelector(".input-container").style.display = "flex";
         inpuContent.innerHTML = "";
         inpuContent.innerHTML += aksaraEdit();
 
-        document.querySelector("#editAksaraId").value = aksaraList[index].id;
+        document.querySelector("#editAksaraNumber").value =
+          aksaraList[index].number;
         document.querySelector("#editAksaraLabel").value =
           aksaraList[index].label;
         document.querySelector("#editAksaraImgUrl").value =
@@ -90,12 +90,15 @@ const Aksara = {
           "#submitAksaraEditButton"
         );
         submitAksaraEdiButton.addEventListener("click", async () => {
+          const editAksaraNumber =
+            document.querySelector("#editAksaraNumber").value;
           const editAksaraLabel =
             document.querySelector("#editAksaraLabel").value;
           const editAksaraImgUrl =
             document.querySelector("#editAksaraImgUrl").value;
 
           const editAksara = {
+            number: editAksaraNumber,
             label: editAksaraLabel,
             imgUrl: editAksaraImgUrl,
           };
@@ -115,6 +118,27 @@ const Aksara = {
             hideLoadingSpinner();
           }
         });
+      });
+    });
+
+    const deleteButtons = document.querySelectorAll(".deleteAksaraButton");
+    deleteButtons.forEach((button, index) => {
+      button.addEventListener("click", async () => {
+        const confirmation = confirm("Apakah kamu yakin?");
+        if (confirmation) {
+          try {
+            showLoadingSpinner();
+            const deleteAksaraMessage = await JaksaraSource.deleteAksara(
+              aksaraList[index].id
+            );
+            alert(deleteAksaraMessage);
+            await this.renderAksaraList();
+          } catch (error) {
+            console.log(error);
+          } finally {
+            hideLoadingSpinner();
+          }
+        }
       });
     });
   },

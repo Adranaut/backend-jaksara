@@ -70,11 +70,11 @@ const Quiz = {
   },
 
   async renderQuizList() {
-    const quizs = await JaksaraSource.getQuiz();
+    const quizList = await JaksaraSource.getQuiz();
     const quizContainer = document.querySelector("#quizContainer");
     quizContainer.innerHTML = "";
     let imageUrl;
-    quizs.forEach((data) => {
+    quizList.forEach((data) => {
       if (data.hasImg === true) {
         imageUrl = data.imgUrl;
       } else {
@@ -93,16 +93,17 @@ const Quiz = {
         inpuContent.innerHTML += quizEdit();
 
         document.querySelector("#editQuizQuestion").value =
-          quizs[index].question;
-        document.querySelector("#editQuizImgUrl").value = quizs[index].imgUrl;
+          quizList[index].question;
+        document.querySelector("#editQuizImgUrl").value =
+          quizList[index].imgUrl;
         document.querySelector("#editQuizCorrect").value =
-          quizs[index].correctAnswer;
+          quizList[index].correctAnswer;
         document.querySelector("#editQuizIncorrect1").value =
-          quizs[index].incorrectAnswer.incorrectAnswer1;
+          quizList[index].incorrectAnswer.incorrectAnswer1;
         document.querySelector("#editQuizIncorrect2").value =
-          quizs[index].incorrectAnswer.incorrectAnswer2;
+          quizList[index].incorrectAnswer.incorrectAnswer2;
         document.querySelector("#editQuizIncorrect3").value =
-          quizs[index].incorrectAnswer.incorrectAnswer3;
+          quizList[index].incorrectAnswer.incorrectAnswer3;
 
         const submitAksaraEdiButton = document.querySelector(
           "#submitQuizEditButton"
@@ -137,10 +138,10 @@ const Quiz = {
             showLoadingSpinner();
             const putQuizMessage = await JaksaraSource.putQuiz(
               editQuiz,
-              quizs[index].id
+              quizList[index].id
             );
             alert(putQuizMessage);
-            await this.renderAksaraList();
+            await this.renderQuizList();
           } catch (error) {
             console.log(error);
           } finally {
@@ -148,6 +149,27 @@ const Quiz = {
             hideLoadingSpinner();
           }
         });
+      });
+    });
+
+    const deleteButtons = document.querySelectorAll(".deleteQuizButton");
+    deleteButtons.forEach((button, index) => {
+      button.addEventListener("click", async () => {
+        const confirmation = confirm("Apakah kamu yakin?");
+        if (confirmation) {
+          try {
+            showLoadingSpinner();
+            const deleteAksaraMessage = await JaksaraSource.deleteAQuiz(
+              quizList[index].id
+            );
+            alert(deleteAksaraMessage);
+            await this.renderQuizList();
+          } catch (error) {
+            console.log(error);
+          } finally {
+            hideLoadingSpinner();
+          }
+        }
       });
     });
   },
