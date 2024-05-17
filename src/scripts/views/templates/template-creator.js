@@ -1,9 +1,7 @@
-import CONFIG from "../../globals/config";
-
 const createAksaraItemTemplate = (aksara) => `
   <article tabindex="0" class="card">
     <div class="card-img">
-      <img class="aksara-img" crossorigin="anonymous" src="${aksara.imgUrl}" alt="${aksara.label}"/>
+      <img class="aksara-img lazyload" crossorigin="anonymous" data-src="${aksara.imgUrl}" alt="${aksara.label}"/>
     </div>
     <div class="card-content">
       <p class="label-aksara">Nomor Urut :</p>
@@ -22,7 +20,7 @@ const createQuizItemTemplate = (quiz, imageUrl) => `
   <article tabindex="0" class="card">
     <div class="quiz-card-container">
       <div class="card-img">
-        <img class="quiz-img" crossorigin="anonymous" src="${imageUrl}" alt="${quiz.id}"/>
+        <img class="quiz-img lazyload" crossorigin="anonymous" data-src="${imageUrl}" alt="${quiz.id}"/>
       </div>
       <div class="quiz-content">
         <p class="label-quiz">Pertanyaan :</p>

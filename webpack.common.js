@@ -68,17 +68,23 @@ module.exports = {
         {
           from: path.resolve(__dirname, "src/public"),
           to: path.resolve(__dirname, "dist"),
-          //   globOptions: {
-          //     ignore: ["**/heros/**"],
-          //   },
         },
       ],
     }),
 
-    // new WorkboxWebpackPlugin.GenerateSW({
-    //   // swDest: "./sw.bundle.js",
-    //   // Code Here
-    // }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: "./sw.bundle.js",
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://api-jaksara.vercel.app/"),
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "api-jaksara",
+          },
+        },
+      ],
+    }),
 
     new ImageminWebpackPlugin({
       plugins: [
