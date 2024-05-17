@@ -6,7 +6,10 @@ const createAksaraItemTemplate = (aksara) => `
       <img class="aksara-img" crossorigin="anonymous" src="${aksara.imgUrl}" alt="${aksara.label}"/>
     </div>
     <div class="card-content">
-      <p class="aksara-label">${aksara.label}</p>
+      <p class="label-aksara">Nomor Urut :</p>
+      <p class="data-aksara">${aksara.number}</p>
+      <p class="label-aksara">Label :</p>
+      <p class="data-aksara">${aksara.label}</p>
     </div>
     <div class="card-action">
       <button class="editAksaraButton" aria-label="Edit data"></button>

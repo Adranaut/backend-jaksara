@@ -134,19 +134,24 @@ const Quiz = {
             incorrectAnswer3: editQuizIncorrect3,
           };
 
-          try {
-            showLoadingSpinner();
-            const putQuizMessage = await JaksaraSource.putQuiz(
-              editQuiz,
-              quizList[index].id
-            );
-            alert(putQuizMessage);
-            await this.renderQuizList();
-          } catch (error) {
-            console.log(error);
-          } finally {
-            document.querySelector(".input-container").style.display = "none";
-            hideLoadingSpinner();
+          const confirmation = confirm(
+            "Apakah kamu yakin ingin mengubah data ini?"
+          );
+          if (confirmation) {
+            try {
+              showLoadingSpinner();
+              const putQuizMessage = await JaksaraSource.putQuiz(
+                editQuiz,
+                quizList[index].id
+              );
+              alert(putQuizMessage);
+              await this.renderQuizList();
+            } catch (error) {
+              console.log(error);
+            } finally {
+              document.querySelector(".input-container").style.display = "none";
+              hideLoadingSpinner();
+            }
           }
         });
       });
@@ -155,7 +160,9 @@ const Quiz = {
     const deleteButtons = document.querySelectorAll(".deleteQuizButton");
     deleteButtons.forEach((button, index) => {
       button.addEventListener("click", async () => {
-        const confirmation = confirm("Apakah kamu yakin?");
+        const confirmation = confirm(
+          "Apakah kamu yakin ingin menghapus data ini?"
+        );
         if (confirmation) {
           try {
             showLoadingSpinner();

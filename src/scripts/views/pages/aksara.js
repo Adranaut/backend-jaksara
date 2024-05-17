@@ -103,19 +103,24 @@ const Aksara = {
             imgUrl: editAksaraImgUrl,
           };
 
-          try {
-            showLoadingSpinner();
-            const putAksaraMessage = await JaksaraSource.putAksara(
-              editAksara,
-              aksaraList[index].id
-            );
-            alert(putAksaraMessage);
-            await this.renderAksaraList();
-          } catch (error) {
-            console.log(error);
-          } finally {
-            document.querySelector(".input-container").style.display = "none";
-            hideLoadingSpinner();
+          const confirmation = confirm(
+            "Apakah kamu yakin ingin mengubah data ini?"
+          );
+          if (confirmation) {
+            try {
+              showLoadingSpinner();
+              const putAksaraMessage = await JaksaraSource.putAksara(
+                editAksara,
+                aksaraList[index].id
+              );
+              alert(putAksaraMessage);
+              await this.renderAksaraList();
+            } catch (error) {
+              console.log(error);
+            } finally {
+              document.querySelector(".input-container").style.display = "none";
+              hideLoadingSpinner();
+            }
           }
         });
       });
@@ -124,7 +129,9 @@ const Aksara = {
     const deleteButtons = document.querySelectorAll(".deleteAksaraButton");
     deleteButtons.forEach((button, index) => {
       button.addEventListener("click", async () => {
-        const confirmation = confirm("Apakah kamu yakin?");
+        const confirmation = confirm(
+          "Apakah kamu yakin ingin menghapus data ini?"
+        );
         if (confirmation) {
           try {
             showLoadingSpinner();

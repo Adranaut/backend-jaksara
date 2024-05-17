@@ -4,16 +4,21 @@
     display: block;
   }
   #drawer > ul {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid #333333;
     flex-direction: column;
   }
   #drawer ul li {
-    margin-bottom: 10px;
+    margin-bottom: 4px;
   }
   #drawer > ul > li > a {
     display: block;
     padding: 20px;
     text-decoration: none;
     color: #333;
+    border-radius: 0;
+    border-bottom: 1px solid #333333;
     transition: background-color 0.3s;
   }
   #drawer > ul > li > a:hover {
@@ -41,6 +46,11 @@
     grid-auto-flow: row;
   }
 
+  .label-quiz,
+  .data-quiz {
+    padding: 0 20px;
+  }
+
   .input-form {
     min-width: 500px;
   }
@@ -48,6 +58,10 @@
 @media screen and (max-width: 500px) {
   .input-form {
     min-width: 400px;
+  }
+
+  footer {
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 400px) {
@@ -58,7 +72,15 @@
     top: 203px;
   }
 
+  #hamburger {
+    margin-right: 0;
+  }
+
   .input-form {
     min-width: 300px;
+  }
+
+  .heading-content {
+    font-size: 24px;
   }
 }
