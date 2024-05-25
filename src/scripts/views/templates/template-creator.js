@@ -1,7 +1,7 @@
-const createAksaraItemTemplate = (aksara) => `
+const createAksaraItemTemplate = (aksara, imageUrl) => `
   <article tabindex="0" class="card">
     <div class="card-img">
-      <img class="aksara-img lazyload" crossorigin="anonymous" data-src="${aksara.imgUrl}" alt="${aksara.label}"/>
+      <img class="aksara-img lazyload" crossorigin="anonymous" data-src="${imageUrl}" alt="${aksara.label}"/>
     </div>
     <div class="card-content">
       <p class="label-aksara">Nomor Urut :</p>
@@ -28,9 +28,9 @@ const createQuizItemTemplate = (quiz, imageUrl) => `
         <p class="label-quiz">Jawaban Benar :</p>
         <p class="data-quiz">${quiz.correctAnswer}</p>
         <p class="label-quiz">Jawaban Salah :</P>
-        <p class="data-quiz">- ${quiz.incorrectAnswer.incorrectAnswer1}</p>
-        <p class="data-quiz">- ${quiz.incorrectAnswer.incorrectAnswer2}</p>
-        <p class="data-quiz">- ${quiz.incorrectAnswer.incorrectAnswer3}</p>
+        <p class="data-quiz">- ${quiz.incorrectAnswer1}</p>
+        <p class="data-quiz">- ${quiz.incorrectAnswer2}</p>
+        <p class="data-quiz">- ${quiz.incorrectAnswer3}</p>
         <div class="card-action">
           <button class="editQuizButton" aria-label="Edit data"></button>
           <button class="deleteQuizButton" aria-label="Hapus data"></button>
@@ -55,7 +55,7 @@ const aksaraInput = () => `
   <label for="aksaraLabel">Label</label>
   <input type="text" id="aksaraLabel" placeholder="Masukan Label" required>
   <label for="aksaraImgUrl">URL Gambar</label>
-  <input type="text" id="aksaraImgUrl" placeholder="Masukan URL Gambar" required>
+  <input type="text" id="aksaraImgUrl" placeholder="Masukan URL Gambar">
   <button id="submitAksaraButton">Tambah</button>
 `;
 
@@ -66,7 +66,7 @@ const aksaraEdit = () => `
   <label for="aksaraLabel">Label</label>
   <input type="text" id="editAksaraLabel" placeholder="Masukan Label" required>
   <label for="aksaraImgUrl">URL Gambar</label>
-  <input type="text" id="editAksaraImgUrl" placeholder="Masukan URL Gambar" required>
+  <input type="text" id="editAksaraImgUrl" placeholder="Masukan URL Gambar">
   <button id="submitAksaraEditButton">Ubah</button>
 `;
 

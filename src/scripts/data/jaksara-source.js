@@ -45,7 +45,7 @@ class JaksaraSource {
   static async getQuiz() {
     const response = await fetch(API_ENDPOINT.QUIZ);
     const responseJson = await response.json();
-    return responseJson.data.quizs;
+    return responseJson.data.quiz;
   }
 
   static async postQuiz(quiz) {

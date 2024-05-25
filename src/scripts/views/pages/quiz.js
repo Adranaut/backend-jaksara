@@ -99,11 +99,11 @@ const Quiz = {
         document.querySelector("#editQuizCorrect").value =
           quizList[index].correctAnswer;
         document.querySelector("#editQuizIncorrect1").value =
-          quizList[index].incorrectAnswer.incorrectAnswer1;
+          quizList[index].incorrectAnswer1;
         document.querySelector("#editQuizIncorrect2").value =
-          quizList[index].incorrectAnswer.incorrectAnswer2;
+          quizList[index].incorrectAnswer2;
         document.querySelector("#editQuizIncorrect3").value =
-          quizList[index].incorrectAnswer.incorrectAnswer3;
+          quizList[index].incorrectAnswer3;
 
         const submitAksaraEdiButton = document.querySelector(
           "#submitQuizEditButton"

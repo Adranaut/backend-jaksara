@@ -67,8 +67,18 @@ const Aksara = {
     const aksaraContainer = document.querySelector("#aksaraContainer");
     aksaraContainer.innerHTML = "";
     const aksaraList = await JaksaraSource.getAksara();
+    let dataImageUrl;
     aksaraList.forEach((aksara) => {
-      aksaraContainer.innerHTML += createAksaraItemTemplate(aksara);
+      if (aksara.imgUrl == "") {
+        dataImageUrl =
+          "https://raw.githubusercontent.com/Adranaut/resource-capstone/main/icon-aksara.png";
+      } else {
+        dataImageUrl = aksara.imgUrl;
+      }
+      aksaraContainer.innerHTML += createAksaraItemTemplate(
+        aksara,
+        dataImageUrl
+      );
     });
 
     const inpuContent = document.querySelector(".input-content");
