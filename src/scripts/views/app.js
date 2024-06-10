@@ -39,6 +39,16 @@ class App {
       document.querySelector(".input-content").innerHTML = "";
       inputContainer.style.display = "none";
     });
+
+    const drawer = document.querySelector("#drawer");
+    const navLinks = drawer.querySelectorAll("ul > li > a");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function (event) {
+        navLinks.forEach((a) => a.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
   }
 }
 

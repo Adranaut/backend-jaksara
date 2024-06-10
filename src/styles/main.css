@@ -76,7 +76,8 @@ header {
   transition: all 0.3s ease;
 }
 
-#drawer > ul > li > a:hover {
+#drawer > ul > li > a:hover,
+#drawer > ul > li > a.active {
   background: var(--primary-color);
   transition: 0.1s;
 }
