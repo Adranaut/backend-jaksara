@@ -77,7 +77,7 @@ module.exports = {
       runtimeCaching: [
         {
           urlPattern: ({ url }) =>
-            url.href.startsWith("https://api-jaksara.vercel.app/"),
+            url.href.startsWith("https://api-jaksara-v2.vercel.app/"),
           handler: "StaleWhileRevalidate",
           options: {
             cacheName: "api-jaksara",

@@ -77,12 +77,12 @@ header {
 }
 
 #drawer > ul > li > a:hover {
-  outline: 4px solid var(--primary-color);
+  background: var(--primary-color);
   transition: 0.1s;
 }
 
 #drawer > ul > li > a:focus {
-  outline: 4px solid var(--primary-color);
+  background: var(--primary-color);
 }
 
 #hamburger {
