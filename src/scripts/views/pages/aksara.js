@@ -146,7 +146,7 @@ const Aksara = {
         );
         if (confirmation) {
           showLoadingSpinner();
-          try {           
+          try {         
             const deleteAksaraMessage = await JaksaraSource.deleteAksara(
               aksaraList[index].id
             );

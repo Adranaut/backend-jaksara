@@ -51,7 +51,7 @@ const hideLoadingSpinner = () => {
 const aksaraInput = () => `
   <p>Tambah Aksara</p>
   <label for="aksaraNumber">Nomor Urut</label>
-  <input type="text" id="aksaraNumber" placeholder="Masukan Nomor Urut" required>
+  <input type="number" id="aksaraNumber" placeholder="Masukan Nomor Urut" required>
   <label for="aksaraLabel">Label</label>
   <input type="text" id="aksaraLabel" placeholder="Masukan Label" required>
   <label for="aksaraImgUrl">URL Gambar</label>
@@ -62,7 +62,7 @@ const aksaraInput = () => `
 const aksaraEdit = () => `
   <p>Ubah Aksara</p>
   <label for="editAksaraNumber">Nomor Urut</label>
-  <input type="text" id="editAksaraNumber" placeholder="Masukan Nomor Urut" required>
+  <input type="number" id="editAksaraNumber" placeholder="Masukan Nomor Urut" required>
   <label for="aksaraLabel">Label</label>
   <input type="text" id="editAksaraLabel" placeholder="Masukan Label" required>
   <label for="aksaraImgUrl">URL Gambar</label>
