@@ -56,12 +56,13 @@ const Quiz = {
 
         try {
           showLoadingSpinner();
-          const postQuizMessage = await JaksaraSource.postQuiz(newQuiz);
-          await this.renderQuizList();
+          const postQuizMessage = await JaksaraSource.postQuiz(newQuiz);         
           alert(postQuizMessage);
+          await this.renderQuizList();
         } catch (error) {
-          alert(error);
+          await this.renderQuizList();
         } finally {
+          await this.renderQuizList();
           document.querySelector(".input-container").style.display = "none";
           hideLoadingSpinner();
         }
@@ -145,10 +146,11 @@ const Quiz = {
                 quizList[index].id
               );
               alert(putQuizMessage);
-              await this.renderQuizList();
+              await this.renderQuizList();            
             } catch (error) {
-              console.log(error);
+              await this.renderQuizList();
             } finally {
+              await this.renderQuizList();
               document.querySelector(".input-container").style.display = "none";
               hideLoadingSpinner();
             }
@@ -169,11 +171,12 @@ const Quiz = {
             const deleteAksaraMessage = await JaksaraSource.deleteAQuiz(
               quizList[index].id
             );
-            alert(deleteAksaraMessage);
-            await this.renderQuizList();
+            alert(deleteAksaraMessage);   
+            await this.renderQuizList();        
           } catch (error) {
-            console.log(error);
+            await this.renderQuizList();
           } finally {
+            await this.renderQuizList();
             hideLoadingSpinner();
           }
         }

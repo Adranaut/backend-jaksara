@@ -74,41 +74,6 @@ module.exports = {
 
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: "./sw.bundle.js",
-      runtimeCaching: [
-        {
-          urlPattern: ({ request }) => request.mode === "navigate",
-          handler: "NetworkFirst",
-          options: {
-            cacheName: "html-cache-jaksara",
-          },
-        },
-        {
-          urlPattern: /\.(?:js|css)$/,
-          handler: "StaleWhileRevalidate",
-          options: {
-            cacheName: "static-resources",
-          },
-        },
-        {
-          urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
-          handler: "CacheFirst",
-          options: {
-            cacheName: "image-cache-jaksara",
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 30 * 24 * 60 * 60,
-            },
-          },
-        },
-        {
-          urlPattern: ({ url }) =>
-            url.href.startsWith("https://api-jaksara-v2.vercel.app/"),
-          handler: "StaleWhileRevalidate",
-          options: {
-            cacheName: "api-jaksara",
-          },
-        },
-      ],
     }),
 
     new ImageminWebpackPlugin({

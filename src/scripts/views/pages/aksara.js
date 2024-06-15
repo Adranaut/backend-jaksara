@@ -51,11 +51,12 @@ const Aksara = {
         try {
           showLoadingSpinner();
           const postAksaraMessage = await JaksaraSource.postAksara(newAksara);
-          await this.renderAksaraList();
           alert(postAksaraMessage);
+          await this.renderAksaraList();
         } catch (error) {
-          console.log(error);
+          await this.renderAksaraList();
         } finally {
+          await this.renderAksaraList();
           document.querySelector(".input-container").style.display = "none";
           hideLoadingSpinner();
         }
@@ -117,8 +118,8 @@ const Aksara = {
             "Apakah kamu yakin ingin mengubah data ini?"
           );
           if (confirmation) {
+            showLoadingSpinner();
             try {
-              showLoadingSpinner();
               const putAksaraMessage = await JaksaraSource.putAksara(
                 editAksara,
                 aksaraList[index].id
@@ -126,10 +127,11 @@ const Aksara = {
               alert(putAksaraMessage);
               await this.renderAksaraList();
             } catch (error) {
-              console.log(error);
+              await this.renderAksaraList();
             } finally {
-              document.querySelector(".input-container").style.display = "none";
-              hideLoadingSpinner();
+              await this.renderAksaraList();
+              document.querySelector(".input-container").style.display = "none"; 
+              hideLoadingSpinner();            
             }
           }
         });
@@ -143,16 +145,17 @@ const Aksara = {
           "Apakah kamu yakin ingin menghapus data ini?"
         );
         if (confirmation) {
-          try {
-            showLoadingSpinner();
+          showLoadingSpinner();
+          try {           
             const deleteAksaraMessage = await JaksaraSource.deleteAksara(
               aksaraList[index].id
             );
             alert(deleteAksaraMessage);
-            await this.renderAksaraList();
+            await this.renderAksaraList();           
           } catch (error) {
-            console.log(error);
+            await this.renderAksaraList();
           } finally {
+            await this.renderAksaraList();
             hideLoadingSpinner();
           }
         }
