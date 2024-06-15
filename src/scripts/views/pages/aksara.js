@@ -24,7 +24,7 @@ const Aksara = {
     try {
       await this.renderAksaraList();
     } catch (error) {
-      console.log(error);
+      await this.renderAksaraList();
     } finally {
       hideLoadingSpinner();
     }

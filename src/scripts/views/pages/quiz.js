@@ -24,7 +24,7 @@ const Quiz = {
     try {
       await this.renderQuizList();
     } catch (error) {
-      alert(error);
+      await this.renderQuizList();
     } finally {
       hideLoadingSpinner();
     }
